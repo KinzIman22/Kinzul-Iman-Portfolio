@@ -1,20 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { terminalPhrases } from '../data/resume'
-import useFadeIn from '../hooks/useFadeIn'
 import profile from '../assets/profile.png'
+import Akoya from '../assets/Akoya.png'
+import Nexa from '../assets/Nexa.png'
+import Shuakt from '../assets/Shuakt.png'
+import Yestime from '../assets/Yestime.png'
 
-const stats = [
-  { value: '6th', label: 'Semester' },
-  { value: '10+', label: 'Projects Built' },
-  { value: '4', label: 'Certifications' }
-]
 
 export default function Hero() {
   const [typed, setTyped] = useState('')
-  const [activeStat, setActiveStat] = useState(0)
-
-  const photoRef = useFadeIn()
 
   const stateRef = useRef({
     phraseIndex: 0,
@@ -23,9 +18,9 @@ export default function Hero() {
     timeoutId: null
   })
 
-  /* -------------------------
-     Terminal Typing Animation
-  ------------------------- */
+  /* =========================
+     TERMINAL TYPING ANIMATION
+  ========================== */
 
   useEffect(() => {
     const prefersReduced = window
@@ -70,6 +65,7 @@ export default function Hero() {
         state.charIndex === 0
       ) {
         state.deleting = false
+
         state.phraseIndex =
           (state.phraseIndex + 1) %
           terminalPhrases.length
@@ -94,18 +90,6 @@ export default function Hero() {
       )
   }, [])
 
-  /* -------------------------
-     Stats Animation
-  ------------------------- */
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStat((prev) => (prev + 1) % stats.length)
-    }, 2500)
-
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <section
       id="top"
@@ -118,20 +102,20 @@ export default function Hero() {
         flex
         items-center
         pt-28
-        pb-16
+        pb-20
         px-5
         md:px-10
         lg:px-16
       "
     >
 
-      {/* --------------------------------
-          BACKGROUND DECORATION
-      -------------------------------- */}
+      {/* =========================
+          BACKGROUND
+      ========================== */}
 
       <div className="absolute inset-0 pointer-events-none">
 
-        {/* Main glow */}
+        {/* Left golden glow */}
         <div
           className="
             absolute
@@ -141,277 +125,138 @@ export default function Hero() {
             h-[500px]
             rounded-full
             bg-accent/10
-            blur-[120px]
+            blur-[130px]
             animate-pulse
           "
         />
 
-        {/* Right glow */}
+        {/* Right golden glow */}
         <div
           className="
             absolute
-            top-1/3
+            top-[25%]
             -right-40
-            w-[450px]
-            h-[450px]
+            w-[500px]
+            h-[500px]
             rounded-full
-            bg-accent/5
-            blur-[110px]
+            bg-accent/8
+            blur-[130px]
             animate-pulse
           "
         />
 
-        {/* Grid */}
+        {/* Subtle grid */}
         <div
           className="
             absolute
             inset-0
-            opacity-[0.035]
+            opacity-[0.025]
             bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
             bg-[size:70px_70px]
           "
         />
 
         {/* Floating dots */}
-        <span className="absolute top-[18%] left-[8%] w-2 h-2 rounded-full bg-accent animate-ping" />
+        <span
+          className="
+            absolute
+            top-[20%]
+            left-[8%]
+            w-2
+            h-2
+            rounded-full
+            bg-accent
+            animate-ping
+          "
+        />
 
-        <span className="absolute top-[30%] right-[12%] w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-
-        <span className="absolute bottom-[20%] left-[45%] w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+        <span
+          className="
+            absolute
+            top-[30%]
+            right-[10%]
+            w-1.5
+            h-1.5
+            rounded-full
+            bg-accent
+            animate-pulse
+          "
+        />
 
       </div>
 
 
-      {/* --------------------------------
+      {/* =========================
           MAIN CONTAINER
-      -------------------------------- */}
+      ========================== */}
 
       <div
         className="
           relative
           z-10
-          max-w-[1300px]
+          max-w-[1250px]
           w-full
           mx-auto
           grid
           grid-cols-1
-          lg:grid-cols-[0.9fr_1.1fr]
-          gap-16
-          lg:gap-24
+          lg:grid-cols-[1fr_0.9fr]
+          gap-14
+          lg:gap-20
           items-center
         "
       >
 
-        {/* =================================
-            LEFT — PROFILE
-        ================================= */}
+
+        {/* ==================================================
+            LEFT SIDE — CONTENT
+        ================================================== */}
 
         <div
-          ref={photoRef}
           className="
-            fade-in
-            relative
             flex
-            items-center
+            flex-col
             justify-center
-            order-1
+            order-2
             lg:order-1
           "
         >
 
-          {/* Outer rotating ring */}
+          {/* Small badge */}
 
           <div
             className="
-              absolute
-              w-[320px]
-              h-[320px]
-              md:w-[420px]
-              md:h-[420px]
-              rounded-full
-              border
-              border-accent/20
-              animate-[spin_18s_linear_infinite]
-            "
-          />
-
-          {/* Second ring */}
-
-          <div
-            className="
-              absolute
-              w-[280px]
-              h-[280px]
-              md:w-[370px]
-              md:h-[370px]
-              rounded-full
-              border
-              border-border-soft
-              animate-[spin_25s_linear_infinite_reverse]
-            "
-          />
-
-          {/* Glow behind image */}
-
-          <div
-            className="
-              absolute
-              w-[270px]
-              h-[270px]
-              md:w-[350px]
-              md:h-[350px]
-              rounded-full
-              bg-accent/15
-              blur-[60px]
-              animate-pulse
-            "
-          />
-
-          {/* Decorative orbit dot */}
-
-          <div
-            className="
-              absolute
-              w-4
-              h-4
-              rounded-full
-              bg-accent
-              shadow-[0_0_25px_rgba(255,255,255,0.5)]
-              animate-[spin_8s_linear_infinite]
-              translate-x-[180px]
-              md:translate-x-[220px]
-            "
-          />
-
-          {/* Profile image */}
-
-          <div
-            className="
-              relative
-              z-10
-              w-[260px]
-              h-[320px]
-              md:w-[330px]
-              md:h-[400px]
-              overflow-hidden
-              rounded-t-[170px]
-              rounded-b-[40px]
-              border
-              border-border-soft
-              bg-bg-alt
-              shadow-[0_30px_80px_rgba(0,0,0,0.45)]
-              group
-            "
-          >
-
-            <img
-              src={profile}
-              alt="Kinzul Iman"
-              className="
-                w-full
-                h-full
-                object-cover
-                object-top
-                transition-transform
-                duration-700
-                group-hover:scale-105
-              "
-            />
-
-            {/* Image overlay */}
-
-            <div
-              className="
-                absolute
-                inset-0
-                bg-gradient-to-t
-                from-bg/40
-                via-transparent
-                to-transparent
-                pointer-events-none
-              "
-            />
-
-          </div>
-
-          {/* Floating tech badge */}
-
-          <div
-            className="
-              absolute
-              z-20
-              -bottom-2
-              left-1/2
-              -translate-x-1/2
-              md:left-auto
-              md:right-[-20px]
-              md:translate-x-0
-              px-5
-              py-3
-              rounded-2xl
-              border
-              border-border-soft
-              bg-bg-alt/80
-              backdrop-blur-xl
-              shadow-xl
-              animate-[float_4s_ease-in-out_infinite]
-            "
-          >
-            <div className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
-              Currently building
-            </div>
-
-            <div className="text-sm font-semibold mt-1">
-              React Native
-            </div>
-          </div>
-
-        </div>
-
-
-        {/* =================================
-            RIGHT — CONTENT
-        ================================= */}
-
-        <div
-          className="
-            order-2
-            lg:order-2
-            flex
-            flex-col
-            justify-center
-          "
-        >
-
-          {/* Small greeting */}
-
-          <div
-            className="
-              flex
+              inline-flex
               items-center
-              gap-3
-              mb-5
-              animate-[fadeUp_0.8s_ease-out]
+              gap-2
+              w-fit
+              px-4
+              py-2
+              mb-7
+              rounded-full
+              border
+              border-accent/60
+              bg-accent/5
+              text-accent
+              font-mono
+              text-[11px]
+              uppercase
+              tracking-[0.12em]
+              shadow-[0_0_18px_rgba(212,175,55,0.08)]
+              animate-[fadeUp_0.7s_ease-out]
             "
           >
-
-            <span className="text-xl animate-bounce">
-              👋
-            </span>
-
             <span
               className="
-                font-mono
-                text-[13px]
-                text-text-secondary
+                w-2
+                h-2
+                rounded-full
+                bg-accent
+                shadow-[0_0_10px_rgba(212,175,55,0.8)]
+                animate-pulse
               "
-            >
-              Hi, I'm{' '}
-              <span className="text-text font-semibold">
-                Kinzul Iman
-              </span>
-            </span>
+            />
 
+            Full Stack Developer
           </div>
 
 
@@ -419,26 +264,19 @@ export default function Hero() {
 
           <div
             className="
-              inline-flex
+              flex
               items-center
               w-fit
+              mb-5
               font-mono
               text-[12px]
               md:text-[13px]
               text-text-muted
-              mb-6
-              px-4
-              py-2
-              rounded-lg
-              border
-              border-border-soft
-              bg-bg-alt/60
-              backdrop-blur-sm
+              animate-[fadeUp_0.8s_ease-out]
             "
           >
-
             <span className="text-accent mr-2">
-              $
+              Hi! from Dev KINZ UL IMAN
             </span>
 
             <span>
@@ -455,94 +293,85 @@ export default function Hero() {
                 animate-blink
               "
             />
-
           </div>
 
 
-          {/* Main heading */}
+          {/* MAIN HEADING */}
 
           <h1
             className="
               font-display
               font-bold
-              tracking-[-0.04em]
+              tracking-[-0.045em]
               text-[42px]
               sm:text-[52px]
-              md:text-[68px]
-              lg:text-[72px]
-              leading-[0.95]
+              md:text-[64px]
+              lg:text-[68px]
+              leading-[0.98]
               mb-7
               animate-[fadeUp_0.9s_ease-out]
             "
           >
 
             <span className="block">
-              FULL STACK
+              Building digital
             </span>
 
             <span
               className="
                 block
-                font-serif
-                italic
-                font-normal
-                text-text-secondary
-                text-[38px]
-                sm:text-[48px]
-                md:text-[60px]
-                lg:text-[64px]
+                text-accent
                 mt-2
               "
             >
-              & MOBILE DEVELOPER
+              experiences
+            </span>
+
+            <span className="block mt-2">
+              with precision
+            </span>
+
+            <span
+              className="
+                block
+                text-text-secondary
+                mt-2
+              "
+            >
+              & care.
             </span>
 
           </h1>
-
-
-          {/* Accent line */}
-
-          <div className="flex items-center gap-3 mb-7">
-
-            <div
-              className="
-                h-[2px]
-                w-16
-                bg-accent
-                animate-[expand_1s_ease-out]
-              "
-            />
-
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-text-muted">
-              MERN · React Native
-            </span>
-
-          </div>
 
 
           {/* Description */}
 
           <p
             className="
+              max-w-[570px]
               text-[15px]
               md:text-[17px]
-              text-text-secondary
-              max-w-[590px]
               leading-[1.8]
-              mb-9
-              animate-[fadeUp_1.1s_ease-out]
+              text-text-secondary
+              mb-8
+              animate-[fadeUp_1s_ease-out]
             "
           >
-            I build{' '}
+            I'm a{' '}
             <span className="text-text font-medium">
-              scalable web and mobile experiences
+              Full Stack (MERN)
             </span>{' '}
-            using modern technologies, thoughtful architecture,
-            and clean user-focused interfaces.
+            and{' '}
+            <span className="text-accent font-medium">
+              React Native
+            </span>{' '}
+            developer based in Lahore, Pakistan.
+            I build clean, scalable and user-focused
+            web and mobile applications.
           </p>
 
 
-          {/* Buttons */}
+          {/* BUTTONS */}
 
           <div
             className="
@@ -550,9 +379,11 @@ export default function Hero() {
               flex-wrap
               items-center
               gap-4
-              mb-12
+              animate-[fadeUp_1.1s_ease-out]
             "
           >
+
+            {/* View Projects */}
 
             <a
               href="#projects"
@@ -561,119 +392,386 @@ export default function Hero() {
                 inline-flex
                 items-center
                 gap-3
-                font-mono
-                text-[13px]
                 px-7
                 py-3.5
                 rounded-lg
+                border
+                border-accent
                 bg-accent
                 text-bg
-                font-semibold
-                shadow-[0_10px_30px_rgba(255,255,255,0.08)]
-                hover:-translate-y-1
-                hover:shadow-[0_15px_40px_rgba(255,255,255,0.15)]
+                font-Archivo Black
+                text-[13px]
+                font-bold
+                shadow-[0_0_20px_rgba(212,175,55,0.15)]
+                hover:shadow-[0_0_35px_rgba(212,175,55,0.35)]
                 transition-all
                 duration-300
               "
             >
               View Projects
 
-              <span className="transition-transform duration-300 group-hover:translate-x-1">
-                →
-              </span>
-
+            
             </a>
 
 
+            {/* GitHub Icon */}
+
             <a
-              href="#contact"
+              href="https://github.com/KinzIman22"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
               className="
-                inline-flex
+                w-12
+                h-12
+                flex
                 items-center
-                font-mono
-                text-[13px]
-                px-7
-                py-3.5
+                justify-center
                 rounded-lg
                 border
                 border-border-soft
                 text-text
-                hover:border-accent
                 hover:text-accent
-                hover:-translate-y-1
+                hover:border-accent
+                hover:bg-accent/5
+                hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]
                 transition-all
                 duration-300
               "
             >
-              Let's Talk
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+
+
+            {/* LinkedIn Icon */}
+
+            <a
+              href="https://www.linkedin.com/in/kinzul-iman-233597342/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="
+                w-12
+                h-12
+                flex
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-border-soft
+                text-text
+                hover:text-accent
+                hover:border-accent
+                hover:bg-accent/5
+                hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]
+                transition-all
+                duration-300
+              "
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+
+
+            {/* Gmail / Email Icon */}
+
+            <a
+              href="#contact"
+              aria-label="Email"
+              className="
+                w-12
+                h-12
+                flex
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-border-soft
+                text-text
+                hover:text-accent
+                hover:border-accent
+                hover:bg-accent/5
+                hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]
+                transition-all
+                duration-300
+              "
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.717v15.43h24v-15.43l-12 9.717z" />
+              </svg>
             </a>
 
           </div>
 
+        </div>
 
-          {/* Stats */}
+
+        {/* ==================================================
+            RIGHT SIDE — IMAGE
+        ================================================== */}
+
+        <div
+          className="
+            order-1
+            lg:order-2
+            relative
+            flex
+            flex-col
+            items-center
+            justify-center
+            pt-5
+            lg:pt-0
+            animate-[fadeIn_1s_ease-out]
+          "
+        >
+
+          {/* Decorative golden dots */}
 
           <div
             className="
+              absolute
+              top-2
+              right-[8%]
               grid
-              grid-cols-3
-              gap-4
-              max-w-[560px]
-              pt-7
-              border-t
-              border-border-soft
+              grid-cols-4
+              gap-2
+              opacity-80
+            "
+          >
+            {Array.from({ length: 16 }).map((_, index) => (
+              <span
+                key={index}
+                className="
+                  w-1
+                  h-1
+                  rounded-full
+                  bg-accent
+                "
+              />
+            ))}
+          </div>
+
+
+          {/* Golden glow behind image */}
+
+          <div
+            className="
+              absolute
+              w-[320px]
+              h-[400px]
+              rounded-[40px]
+              bg-accent/10
+              blur-[70px]
+              animate-pulse
+            "
+          />
+
+
+          {/* IMAGE */}
+
+          <div
+            className="
+              group
+              relative
+              z-10
+              w-[270px]
+              h-[350px]
+              sm:w-[290px]
+              sm:h-[375px]
+              md:w-[310px]
+              md:h-[400px]
+              overflow-hidden
+              rounded-[28px]
+              border
+              border-accent/70
+              bg-bg-alt
+              shadow-[0_30px_80px_rgba(0,0,0,0.45)]
+              transition-all
+              duration-500
+              hover:border-accent
+              hover:shadow-[0_30px_90px_rgba(212,175,55,0.18)]
             "
           >
 
-            {stats.map((stat, index) => (
+            <img
+              src={profile}
+              alt="Kinzul Iman"
+              className="
+                w-full
+                h-full
+                object-cover
+                object-top
+                transition-transform
+                duration-700
+                group-hover:scale-[1.03]
+              "
+            />
 
-              <div
-                key={stat.label}
-                className={`
-                  group
-                  relative
-                  transition-all
-                  duration-500
-                  ${
-                    activeStat === index
-                      ? 'translate-y-[-3px]'
-                      : ''
-                  }
-                `}
-              >
+            {/* Image gradient */}
 
-                <div
-                  className="
-                    font-display
-                    font-bold
-                    text-2xl
-                    md:text-3xl
-                    text-text
-                    mb-1
-                    transition-colors
-                    duration-300
-                    group-hover:text-accent
-                  "
-                >
-                  {stat.value}
+            <div
+              className="
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-bg/50
+                via-transparent
+                to-transparent
+                pointer-events-none
+              "
+            />
+
+          </div>
+
+
+          {/* ==================================================
+              IMAGE INFO CARD
+          ================================================== */}
+
+          <div
+            className="
+              relative
+              z-20
+              -mt-8
+              w-[calc(100%-30px)]
+              max-w-[560px]
+              px-5
+              py-4
+              rounded-2xl
+              border
+              border-border-soft
+              bg-bg-alt/90
+              backdrop-blur-xl
+              shadow-[0_20px_50px_rgba(0,0,0,0.4)]
+              flex
+              items-center
+              justify-between
+              gap-5
+              animate-[float_4s_ease-in-out_infinite]
+            "
+          >
+
+            {/* Projects */}
+
+            <div className="flex items-center gap-3">
+
+              <div className="flex -space-x-2.5">
+                <div className="w-8 h-8 rounded-full border-2 border-bg-alt bg-accent/30 overflow-hidden flex items-center justify-center">
+                  <img src={Nexa} alt="avatar" className="w-full h-full object-cover" />
+                </div>
+                <div className="w-8 h-8 rounded-full border-2 border-bg-alt bg-accent/40 overflow-hidden flex items-center justify-center">
+                  <img src={Akoya} alt="avatar" className="w-full h-full object-cover" />
+                </div>
+                <div className="w-8 h-8 rounded-full border-2 border-bg-alt bg-accent/50 overflow-hidden flex items-center justify-center">
+                  <img src={Shuakt} alt="avatar" className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              <div>
+
+                <div className="text-accent font-semibold text-sm">
+                  10+ Projects
                 </div>
 
-                <div
-                  className="
-                    font-mono
-                    text-[10px]
-                    md:text-[11px]
-                    uppercase
-                    tracking-[0.12em]
-                    text-text-muted
-                  "
-                >
-                  {stat.label}
+                <div className="text-text-muted text-[11px]">
+                  Completed Successfully
                 </div>
 
               </div>
 
-            ))}
+            </div>
+
+
+            {/* Divider */}
+
+            <div className="hidden sm:block w-px h-10 bg-border-soft" />
+
+
+            {/* Location */}
+
+            <div className="hidden sm:block">
+
+              <div className="text-accent font-semibold text-sm">
+                Lahore, Pakistan
+              </div>
+
+              <div className="flex items-center gap-1.5 text-text-muted text-[11px]">
+
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+
+                Available for work
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* ==================================================
+              TECH STACK STRIP
+          ================================================== */}
+
+          <div
+            className="
+              relative
+              z-10
+              mt-4
+              w-full
+              max-w-[620px]
+              px-5
+              py-4
+              rounded-2xl
+              border
+              border-border-soft
+              bg-bg-alt/60
+              backdrop-blur-xl
+              flex
+              flex-wrap
+              items-center
+              justify-center
+              gap-x-5
+              gap-y-3
+              text-[11px]
+              md:text-[12px]
+              text-text-secondary
+            "
+          >
+
+            <span className="flex items-center gap-2">
+              <span className="text-accent">✦</span>
+              MERN Stack
+            </span>
+
+            <span className="hidden sm:block text-accent/50">
+              |
+            </span>
+
+            <span className="flex items-center gap-2">
+              <span className="text-accent">▣</span>
+              React Native
+            </span>
+
+            <span className="hidden sm:block text-accent/50">
+              |
+            </span>
+
+            <span className="flex items-center gap-2">
+              <span className="text-accent">&lt;/&gt;</span>
+              REST APIs
+            </span>
+
+            <span className="hidden sm:block text-accent/50">
+              |
+            </span>
+
+            <span className="flex items-center gap-2">
+              <span className="text-accent">✧</span>
+              Clean Code
+            </span>
 
           </div>
 
@@ -682,12 +780,14 @@ export default function Hero() {
       </div>
 
 
-      {/* Scroll indicator */}
+      {/* =========================
+          SCROLL INDICATOR
+      ========================== */}
 
       <div
         className="
           absolute
-          bottom-7
+          bottom-6
           left-1/2
           -translate-x-1/2
           hidden
@@ -696,15 +796,12 @@ export default function Hero() {
           items-center
           gap-2
           text-text-muted
-          animate-bounce
         "
       >
 
-        <span className="font-mono text-[9px] uppercase tracking-[0.3em]">
-          Scroll
-        </span>
+        
 
-        <span className="w-px h-8 bg-border-soft" />
+        
 
       </div>
 

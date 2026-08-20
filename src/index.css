@@ -1,50 +1,84 @@
 @import "tailwindcss";
 
 @theme {
+  /* =========================
+     COLORS
+  ========================== */
+
   --color-bg: #0E0E10;
   --color-bg-alt: #161619;
   --color-bg-raised: #1B1B1F;
+
   --color-text: #EAEAEA;
   --color-text-secondary: #9B9B96;
   --color-text-muted: #6B6B6B;
+
   --color-accent: #C9A227;
   --color-accent-hover: #DCB232;
   --color-accent-dim: #8A7420;
+
   --color-border: #28282B;
   --color-border-soft: #1E1E21;
 
-  --font-display: "Fraunces", serif;
+
+  /* =========================
+     FONTS
+  ========================== */
+
+  --font-display: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+
+  /* =========================
+     ANIMATIONS
+  ========================== */
 
   --animate-blink: blink 1s step-end infinite;
 
   @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+      opacity: 0;
+    }
   }
 }
+
+
+/* =========================
+   BASE
+========================== */
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-bg text-text font-body antialiased;
   }
+
   a {
     color: inherit;
     text-decoration: none;
   }
+
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 }
 
+
+/* =========================
+   COMPONENTS
+========================== */
+
 @layer components {
+
   .eyebrow {
     @apply font-mono text-xs tracking-[.14em] uppercase text-accent flex items-center gap-2.5 mb-5;
   }
+
   .eyebrow::before {
     content: "";
     width: 24px;
@@ -61,16 +95,34 @@
   .fade-in {
     opacity: 0;
     transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
   }
+
   .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+
+/* =========================
+   REDUCED MOTION
+========================== */
+
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .fade-in { opacity: 1; transform: none; transition: none; }
-  .animate-blink { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-blink {
+    animation: none;
+  }
 }
