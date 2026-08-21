@@ -1,31 +1,32 @@
 @import "tailwindcss";
 
 @theme {
+
   /* =========================
      COLORS
   ========================== */
 
-  --color-bg: #0E0E10;
-  --color-bg-alt: #161619;
-  --color-bg-raised: #1B1B1F;
+  --color-bg: #2B2B2B;
+  --color-bg-alt: #333333;
+  --color-bg-raised: #3A3A3A;
 
-  --color-text: #EAEAEA;
-  --color-text-secondary: #9B9B96;
-  --color-text-muted: #6B6B6B;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #D0D7D1;
+  --color-text-muted:  #FFFDD0;
 
   --color-accent: #C9A227;
   --color-accent-hover: #DCB232;
   --color-accent-dim: #8A7420;
 
-  --color-border: #28282B;
-  --color-border-soft: #1E1E21;
+  --color-border: #484848;
+  --color-border-soft: #3D3D3D;
 
 
   /* =========================
      FONTS
   ========================== */
 
-  --font-display: "Playfair Display", serif;
+  --font-display: "Poppins", serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
@@ -49,6 +50,7 @@
 ========================== */
 
 @layer base {
+
   html {
     scroll-behavior: smooth;
   }
@@ -65,6 +67,36 @@
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
+  }
+
+  /* Used by Hero.jsx entrance animations (animate-[fadeUp_...]) */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Used by Hero.jsx image entrance (animate-[fadeIn_...]) */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Used by Hero.jsx info card (animate-[float_...]) */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Used by Hero.jsx "Meet Kinz Ul Iman" line (animate-[radiantFloat_...]) */
+  @keyframes radiantFloat {
+    0%, 100% { transform: translateY(0); text-shadow: 0 0 6px rgba(201,162,39,0.35); }
+    50% { transform: translateY(-5px); text-shadow: 0 0 18px rgba(201,162,39,0.8); }
+  }
+
+  /* Used by Hero.jsx "Full Stack Developer" badge (animate-[badgeBlink_...]) */
+  @keyframes badgeBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
   }
 }
 
@@ -95,6 +127,7 @@
   .fade-in {
     opacity: 0;
     transform: translateY(16px);
+
     transition:
       opacity 0.6s ease,
       transform 0.6s ease;
@@ -112,6 +145,7 @@
 ========================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }

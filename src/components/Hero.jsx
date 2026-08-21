@@ -5,7 +5,6 @@ import profile from '../assets/profile.png'
 import Akoya from '../assets/Akoya.png'
 import Nexa from '../assets/Nexa.png'
 import Shuakt from '../assets/Shuakt.png'
-import Yestime from '../assets/Yestime.png'
 
 
 export default function Hero() {
@@ -156,33 +155,6 @@ export default function Hero() {
           "
         />
 
-        {/* Floating dots */}
-        <span
-          className="
-            absolute
-            top-[20%]
-            left-[8%]
-            w-2
-            h-2
-            rounded-full
-            bg-accent
-            animate-ping
-          "
-        />
-
-        <span
-          className="
-            absolute
-            top-[30%]
-            right-[10%]
-            w-1.5
-            h-1.5
-            rounded-full
-            bg-accent
-            animate-pulse
-          "
-        />
-
       </div>
 
 
@@ -221,7 +193,7 @@ export default function Hero() {
           "
         >
 
-          {/* Small badge */}
+          {/* Small badge — hover turns golden + square corners */}
 
           <div
             className="
@@ -232,7 +204,7 @@ export default function Hero() {
               px-4
               py-2
               mb-7
-              rounded-full
+              rounded-md
               border
               border-accent/60
               bg-accent/5
@@ -242,30 +214,27 @@ export default function Hero() {
               uppercase
               tracking-[0.12em]
               shadow-[0_0_18px_rgba(212,175,55,0.08)]
-              animate-[fadeUp_0.7s_ease-out]
+              transition-all
+              duration-300
+              cursor-default
+              hover:bg-accent
+              hover:text-bg
+              hover:border-accent
+              hover:shadow-[0_0_25px_rgba(212,175,55,0.35)]
+              animate-[fadeUp_0.7s_ease-out,badgeBlink_2.2s_ease-in-out_infinite]
             "
           >
-            <span
-              className="
-                w-2
-                h-2
-                rounded-full
-                bg-accent
-                shadow-[0_0_10px_rgba(212,175,55,0.8)]
-                animate-pulse
-              "
-            />
-
             Full Stack Developer
           </div>
 
 
-          {/* Terminal */}
+          {/* Terminal / meet line — floating + radiant glow */}
 
           <div
             className="
               flex
               items-center
+              flex-wrap
               w-fit
               mb-5
               font-mono
@@ -275,8 +244,8 @@ export default function Hero() {
               animate-[fadeUp_0.8s_ease-out]
             "
           >
-            <span className="text-accent mr-2">
-              Hi! from Dev KINZ UL IMAN
+            <span className="text-accent mr-2 animate-[radiantFloat_3s_ease-in-out_infinite]">
+              Meet Kinz Ul Iman — Developer &amp; Creator
             </span>
 
             <span>
@@ -303,10 +272,10 @@ export default function Hero() {
               font-display
               font-bold
               tracking-[-0.045em]
-              text-[42px]
+              text-[36px]
               sm:text-[52px]
               md:text-[64px]
-              lg:text-[68px]
+              lg:text-[60px]
               leading-[0.98]
               mb-7
               animate-[fadeUp_0.9s_ease-out]
@@ -314,7 +283,7 @@ export default function Hero() {
           >
 
             <span className="block">
-              Building digital
+             Where thoughtful
             </span>
 
             <span
@@ -324,21 +293,11 @@ export default function Hero() {
                 mt-2
               "
             >
-              experiences
+             design meets
             </span>
 
             <span className="block mt-2">
-              with precision
-            </span>
-
-            <span
-              className="
-                block
-                text-text-secondary
-                mt-2
-              "
-            >
-              & care.
+             powerfull Code
             </span>
 
           </h1>
@@ -357,17 +316,17 @@ export default function Hero() {
               animate-[fadeUp_1s_ease-out]
             "
           >
-            I'm a{' '}
+            Focused on{' '}
             <span className="text-text font-medium">
-              Full Stack (MERN)
+              full-stack development
             </span>{' '}
             and{' '}
             <span className="text-accent font-medium">
-              React Native
-            </span>{' '}
-            developer based in Lahore, Pakistan.
-            I build clean, scalable and user-focused
-            web and mobile applications.
+              mobile applications
+            </span>
+            , I create practical digital solutions with modern
+            technologies, thoughtful architecture, and a strong eye
+            for detail.
           </p>
 
 
@@ -382,7 +341,6 @@ export default function Hero() {
               animate-[fadeUp_1.1s_ease-out]
             "
           >
-
             {/* View Projects */}
 
             <a
@@ -399,7 +357,6 @@ export default function Hero() {
                 border-accent
                 bg-accent
                 text-bg
-                font-Archivo Black
                 text-[13px]
                 font-bold
                 shadow-[0_0_20px_rgba(212,175,55,0.15)]
@@ -409,8 +366,6 @@ export default function Hero() {
               "
             >
               View Projects
-
-            
             </a>
 
 
@@ -528,40 +483,13 @@ export default function Hero() {
           "
         >
 
-          {/* Decorative golden dots */}
-
-          <div
-            className="
-              absolute
-              top-2
-              right-[8%]
-              grid
-              grid-cols-4
-              gap-2
-              opacity-80
-            "
-          >
-            {Array.from({ length: 16 }).map((_, index) => (
-              <span
-                key={index}
-                className="
-                  w-1
-                  h-1
-                  rounded-full
-                  bg-accent
-                "
-              />
-            ))}
-          </div>
-
-
           {/* Golden glow behind image */}
 
           <div
             className="
               absolute
-              w-[320px]
-              h-[400px]
+              w-[240px]
+              h-[300px]
               rounded-[40px]
               bg-accent/10
               blur-[70px]
@@ -570,19 +498,19 @@ export default function Hero() {
           />
 
 
-          {/* IMAGE */}
+          {/* IMAGE — smaller, dot grid removed */}
 
           <div
             className="
               group
               relative
               z-10
-              w-[270px]
-              h-[350px]
-              sm:w-[290px]
-              sm:h-[375px]
-              md:w-[310px]
-              md:h-[400px]
+              w-[200px]
+              h-[260px]
+              sm:w-[215px]
+              sm:h-[280px]
+              md:w-[230px]
+              md:h-[295px]
               overflow-hidden
               rounded-[28px]
               border
@@ -694,7 +622,10 @@ export default function Hero() {
 
             <div className="hidden sm:block">
 
-              <div className="text-accent font-semibold text-sm">
+              <div className="text-accent font-semibold text-sm flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+                  <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.5 6.4 11.54 6.68 11.8a1.2 1.2 0 0 0 1.64 0C13.1 21.04 19.5 15 19.5 9.5 19.5 5.36 16.14 2 12 2zm0 10.25a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5z" />
+                </svg>
                 Lahore, Pakistan
               </div>
 
@@ -742,7 +673,9 @@ export default function Hero() {
           >
 
             <span className="flex items-center gap-2">
-              <span className="text-accent">✦</span>
+              <svg className="w-3.5 h-3.5 fill-accent shrink-0" viewBox="0 0 24 24">
+                <path d="M3 5.5 12 2l9 3.5v3L12 12 3 8.5v-3zM3 11l9 3.5 9-3.5v3l-9 3.5-9-3.5v-3zm0 5.5 9 3.5 9-3.5v3L12 23l-9-3.5v-3z" />
+              </svg>
               MERN Stack
             </span>
 
@@ -751,7 +684,9 @@ export default function Hero() {
             </span>
 
             <span className="flex items-center gap-2">
-              <span className="text-accent">▣</span>
+              <svg className="w-3.5 h-3.5 fill-accent shrink-0" viewBox="0 0 24 24">
+                <path d="M16 2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-4 19a1.25 1.25 0 1 1 0-2.5A1.25 1.25 0 0 1 12 21zm4-4H8V5h8v12z" />
+              </svg>
               React Native
             </span>
 
@@ -760,7 +695,9 @@ export default function Hero() {
             </span>
 
             <span className="flex items-center gap-2">
-              <span className="text-accent">&lt;/&gt;</span>
+              <svg className="w-3.5 h-3.5 fill-accent shrink-0" viewBox="0 0 24 24">
+                <path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+              </svg>
               REST APIs
             </span>
 
@@ -769,39 +706,15 @@ export default function Hero() {
             </span>
 
             <span className="flex items-center gap-2">
-              <span className="text-accent">✧</span>
-              Clean Code
+              <svg className="w-3.5 h-3.5 fill-accent shrink-0" viewBox="0 0 24 24">
+                <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM12 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm5 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V7h10v2z" />
+              </svg>
+              Software Requirements Engineering
             </span>
 
           </div>
 
         </div>
-
-      </div>
-
-
-      {/* =========================
-          SCROLL INDICATOR
-      ========================== */}
-
-      <div
-        className="
-          absolute
-          bottom-6
-          left-1/2
-          -translate-x-1/2
-          hidden
-          md:flex
-          flex-col
-          items-center
-          gap-2
-          text-text-muted
-        "
-      >
-
-        
-
-        
 
       </div>
 

@@ -12,13 +12,46 @@ export const education = [
   {
     degree: 'BS Software Engineering',
     school: 'University of Central Punjab, Lahore',
-    years: '2023 — ongoing · 6th semester'
+    years: '2023 — ongoing · 6th semester',
+    image: 'ucp'
   },
   {
     degree: 'F.Sc. Medical',
     school: 'Kips College, Bahawalpur',
     years: '2021 — 2023'
   }
+]
+
+export const highlights = [
+  {
+    icon: '⚡',
+    title: 'Full-Stack MERN',
+    description: 'Scalable REST APIs, clean architecture, and well-structured backends.'
+  },
+  {
+    icon: '📱',
+    title: 'React Native Apps',
+    description: 'Smooth, cross-platform mobile experiences built with Expo.'
+  },
+  {
+    icon: '🤖',
+    title: 'Machine Learning',
+    description: 'Python, scikit-learn & TensorFlow applied to real predictive datasets.'
+  },
+  {
+    icon: '🧩',
+    title: 'Clean, Scalable Code',
+    description: 'OOP, DSA, and solid software design principles in every project.'
+  }
+]
+
+export const beyondCode = ['Fashion Design', 'Debating', 'Hosting', 'Painting']
+
+export const quickFacts = [
+  { icon: 'pin', label: 'Based in', value: 'Lahore, Pakistan' },
+  { icon: 'laptop', label: 'Focus', value: 'Web & Mobile Development' },
+  { icon: 'code', label: 'Stack', value: 'MERN + React Native' },
+  { icon: 'rocket', label: 'Currently', value: 'Building & Learning' }
 ]
 
 export const skills = [
