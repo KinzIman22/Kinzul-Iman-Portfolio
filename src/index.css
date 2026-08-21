@@ -7,7 +7,7 @@
   ========================== */
 
   --color-bg: #2B2B2B;
-  --color-bg-alt: #333333;
+  --color-bg-alt: #252827;
   --color-bg-raised: #3A3A3A;
 
   --color-text: #FFFFFF;
@@ -28,7 +28,7 @@
 
   --font-display: "Poppins", serif;
   --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+--font-mono: "Archivo Black", sans-serif;
 
 
   /* =========================

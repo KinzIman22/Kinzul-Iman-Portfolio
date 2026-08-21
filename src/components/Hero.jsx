@@ -601,7 +601,7 @@ export default function Hero() {
               <div>
 
                 <div className="text-accent font-semibold text-sm">
-                  10+ Projects
+                  30+ Projects
                 </div>
 
                 <div className="text-text-muted text-[11px]">
